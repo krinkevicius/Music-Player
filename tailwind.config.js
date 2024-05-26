@@ -4,10 +4,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        lightBlack: '#121212',
-        spotifyGray: '#979695',
-        spotifyHover: '#2a2a2a',
-        spotifyGreen: '#1db954',
+        customCharcoal: '#121212',
+        customGray: '#979695',
+        singleTrackHover: '#2a2a2a',
+        customGreen: '#1db954',
         rangeInputBackground: '#4d4d4d',
       },
     },

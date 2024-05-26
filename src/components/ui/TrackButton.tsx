@@ -29,7 +29,7 @@ export default function TrackButton({ song, isHovered }: TrackButtonProps) {
       </button>
     )
 
-  if (isCurrentSongPlaying) return <CurrentlyPlayingSVG className="size-3.5 fill-spotifyGreen" />
+  if (isCurrentSongPlaying) return <CurrentlyPlayingSVG className="size-3.5 fill-customGreen" />
 
   return <div>{song.id}</div>
 }

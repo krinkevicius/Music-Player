@@ -6,14 +6,14 @@ export const CHROMIUM_PROGRESS_STYLES = [
   'before:w-[var(--customWidth)]',
   'before:absolute',
   'before:z-10',
-  'before:hover:bg-spotifyGreen',
+  'before:hover:bg-customGreen',
 ]
 
 export const FIREFOX_PROGRESS_STYLES = [
   '[&::-moz-range-progress]:bg-white',
   '[&::-moz-range-progress]:rounded-lg',
   '[&::-moz-range-progress]:h-1',
-  '[&::-moz-range-progress]:hover:bg-spotifyGreen',
+  '[&::-moz-range-progress]:hover:bg-customGreen',
 ]
 
 export const CHROMIUM_THUMB_STYLES = [

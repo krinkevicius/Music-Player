@@ -21,7 +21,7 @@ export default function TrackInfo({
         <div className="flex flex-col justify-center">
           <div className="text-sm font-semibold">{song.title}</div>
           <div
-            className={`text-xs font-semibold ${highlightArtistName ? 'text-white' : 'text-spotifyGray'}`}
+            className={`text-xs font-semibold ${highlightArtistName ? 'text-white' : 'text-customGray'}`}
           >
             {song.artist}
           </div>

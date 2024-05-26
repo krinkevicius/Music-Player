@@ -31,7 +31,7 @@ export default function MusicPlayer() {
       <audio ref={audioRef} />
       <div
         onClick={() => setShowModal(prevState => !prevState)}
-        className="mobile-player flex flex-col bg-lightBlack gap-1 px-8 py-2 justify-center cursor-pointer md:hidden"
+        className="mobile-player flex flex-col bg-customCharcoal gap-1 px-8 py-2 justify-center cursor-pointer md:hidden"
       >
         <div className="flex flex-row justify-between">
           <div className="flex flex-row gap-2 h-14 w-full text-white">
@@ -39,8 +39,8 @@ export default function MusicPlayer() {
           </div>
           <div className="flex items-center justify-center pl-4">
             <PlayPauseButton
-              PlayIcon={<IoMdPlay className="size-6 fill-spotifyGray hover:fill-white" />}
-              PauseIcon={<IoMdPause className="size-6 fill-spotifyGray hover:fill-white" />}
+              PlayIcon={<IoMdPlay className="size-6 fill-customGray hover:fill-white" />}
+              PauseIcon={<IoMdPause className="size-6 fill-customGray hover:fill-white" />}
             />
           </div>
         </div>
@@ -51,7 +51,7 @@ export default function MusicPlayer() {
       <div
         className={`${showModal ? 'fixed inset-0 flex' : 'hidden'} w-full md:relative md:flex items-center justify-center bg-[rgb(0_0_0_/_20%)] z-50`}
       >
-        <div className="p-8 md:p-4 w-full h-full max-h-screen rounded-xl bg-lightBlack shadow-md text-spotifyGray flex flex-col gap-12">
+        <div className="p-8 md:p-4 w-full h-full max-h-screen rounded-xl bg-customCharcoal shadow-md text-customGray flex flex-col gap-12">
           <button
             className="md:hidden"
             onClick={() => setShowModal(prevState => !prevState)}

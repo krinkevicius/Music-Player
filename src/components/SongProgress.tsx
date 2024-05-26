@@ -15,7 +15,7 @@ export default function SongProgress({
 
   const duration = useDuration(currentSong.source)
   return (
-    <div className="grid grid-cols-2 gap-x-2 md:grid-cols-[auto_1fr_auto] w-full h-full text-spotifyGray">
+    <div className="grid grid-cols-2 gap-x-2 md:grid-cols-[auto_1fr_auto] w-full h-full text-customGray">
       <div className="w-full h-full col-span-2 order-1 md:order-2 flex items-center md:col-span-1">
         <RangeInput
           value={currentTime}

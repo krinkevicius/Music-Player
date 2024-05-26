@@ -14,7 +14,7 @@ export default function Track({ song }: { song: Song }) {
   return (
     <div
       ref={hoverRef}
-      className={`flex flex-row gap-2 py-2 px-4 rounded-lg items-center justify-between font-semibold hover:bg-spotifyHover ${isCurrentSong ? 'text-spotifyGreen' : 'text-white'}`}
+      className={`flex flex-row gap-2 py-2 px-4 rounded-lg items-center justify-between font-semibold hover:bg-singleTrackHover ${isCurrentSong ? 'text-customGreen' : 'text-white'}`}
     >
       <div className="flex items-center justify-center size-6 text-center">
         <TrackButton song={song} isHovered={isHovered} />

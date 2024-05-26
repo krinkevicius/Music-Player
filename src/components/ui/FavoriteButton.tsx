@@ -22,9 +22,9 @@ export default function FavoriteButton({ songId, isFavorite, isShowing }: Favori
         title={buttonTitle}
       >
         {isFavorite ? (
-          <IoIosCheckmarkCircle className="fill-spotifyGreen size-6" />
+          <IoIosCheckmarkCircle className="fill-customGreen size-6" />
         ) : (
-          <IoMdAddCircleOutline className="fill-spotifyGray size-6 hover:fill-white" />
+          <IoMdAddCircleOutline className="fill-customGray size-6 hover:fill-white" />
         )}
       </button>
     )
