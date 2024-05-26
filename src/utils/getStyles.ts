@@ -1,4 +1,6 @@
 /**
+ * @private This function is not currently in use.
+ *
  * Prepends a given prefix to each element of an array of strings and combines them into a single string.
  *
  * @param {string} prefix - The prefix to prepend to each element of the array.

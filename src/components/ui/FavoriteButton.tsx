@@ -7,14 +7,10 @@ import { IoIosCheckmarkCircle } from 'react-icons/io'
 type FavoriteButtonProps = {
   songId: Song['id']
   isFavorite: boolean
-  isShowing?: boolean
+  isShowing: boolean
 }
 
-export default function FavoriteButton({
-  songId,
-  isFavorite,
-  isShowing = true,
-}: FavoriteButtonProps) {
+export default function FavoriteButton({ songId, isFavorite, isShowing }: FavoriteButtonProps) {
   const buttonTitle = isFavorite ? 'Remove from favorites' : 'Add to favorites'
   const onToggleFavorite = useStore(state => state.onToggleFavorite)
 

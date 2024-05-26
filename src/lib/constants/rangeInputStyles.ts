@@ -1,16 +1,38 @@
-export const PROGRESS_STYLES = ['bg-white', 'rounded-lg', 'h-1']
-
-export const PROGRESS_STYLES_HOVER = ['hover:bg-spotifyGreen']
-
 export const CHROMIUM_PROGRESS_STYLES = [
-  'content-[""]',
-  'w-[var(--customWidth)]',
-  'absolute',
-  'z-10',
+  'before:bg-white',
+  'before:rounded-lg',
+  'before:h-1',
+  'before:content-[""]',
+  'before:w-[var(--customWidth)]',
+  'before:absolute',
+  'before:z-10',
+  'before:hover:bg-spotifyGreen',
 ]
 
-export const THUMB_STYLES = ['rounded-full', 'border-0', 'w-0', 'h-0']
+export const FIREFOX_PROGRESS_STYLES = [
+  '[&::-moz-range-progress]:bg-white',
+  '[&::-moz-range-progress]:rounded-lg',
+  '[&::-moz-range-progress]:h-1',
+  '[&::-moz-range-progress]:hover:bg-spotifyGreen',
+]
 
-export const THUMB_STYLES_HOVER = ['hover:w-3', 'hover:h-3']
+export const CHROMIUM_THUMB_STYLES = [
+  '[&::-webkit-slider-thumb]:z-20',
+  '[&::-webkit-slider-thumb]:relative',
+  '[&::-webkit-slider-thumb]:bg-white',
+  '[&::-webkit-slider-thumb]:rounded-full',
+  '[&::-webkit-slider-thumb]:border-0',
+  '[&::-webkit-slider-thumb]:w-0',
+  '[&::-webkit-slider-thumb]:h-0',
+  '[&::-webkit-slider-thumb]:hover:w-3',
+  '[&::-webkit-slider-thumb]:hover:h-3',
+]
 
-export const CHROMIUM_THUMB_STYLES = ['z-20', 'relative', 'bg-white']
+export const FIREFOX_THUMB_STYLES = [
+  '[&::-moz-range-thumb]:rounded-full',
+  '[&::-moz-range-thumb]:border-0',
+  '[&::-moz-range-thumb]:w-0',
+  '[&::-moz-range-thumb]:h-0',
+  '[&::-moz-range-thumb]:hover:w-3',
+  '[&::-moz-range-thumb]:hover:h-3',
+]

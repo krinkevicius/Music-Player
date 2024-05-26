@@ -1,84 +1,78 @@
-import Duration from '@/components/Duration'
-import VolumeControl from '@/components/VolumeControl'
-import useDuration from '@/hooks/useDuration'
-import useAudio from '@/hooks/useAudio'
+import { useState } from 'react'
 import { useStore } from '@/store'
-import { IoIosSkipBackward } from 'react-icons/io'
-import { IoMdPlayCircle } from 'react-icons/io'
-import { IoPauseCircle } from 'react-icons/io5'
-import { IoIosSkipForward } from 'react-icons/io'
-import convertSeconds from '@/utils/convertSeconds'
-import handleRangeInputChange from '@/utils/handleRangeInputChange'
+import useAudio from '@/hooks/useAudio'
+import useKeyboardShortcut from '@/hooks/useKeyboardShortcut'
+import TrackInfo from '@/components/TrackInfo'
+import PlayPauseButton from '@/components/ui/PlayPauseButton'
 import RangeInput from '@/components/ui/RangeInput'
+import useDuration from '@/hooks/useDuration'
+import VolumeControl from '@/components/VolumeControl'
+import SongProgress from '@/components/SongProgress'
+import SongControls from '@/components/SongControls'
+import { IoMdPlay, IoMdPause, IoIosArrowDown } from 'react-icons/io'
+import { NEXT_SONG_KEY, PLAY_PAUSE_KEY, PREVIOUS_SONG_KEY } from '@/lib/constants/keyboardShortcuts'
 
 export default function MusicPlayer() {
+  const [showModal, setShowModal] = useState(false)
   const currentSong = useStore(state => state.currentSong)
-  const isPlaying = useStore(state => state.isPlaying)
   const currentTime = useStore(state => state.currentTime)
   const onPlayPause = useStore(state => state.onPlayPause)
   const onNextPrevSong = useStore(state => state.onNextPrevSong)
 
+  const [audioRef, setAudioTime] = useAudio()
   const duration = useDuration(currentSong.source)
 
-  const [audioRef, setAudioTime] = useAudio()
+  useKeyboardShortcut(PLAY_PAUSE_KEY, onPlayPause)
+  useKeyboardShortcut(PREVIOUS_SONG_KEY, () => onNextPrevSong('prev'))
+  useKeyboardShortcut(NEXT_SONG_KEY, () => onNextPrevSong('next'))
 
   return (
     <>
       <audio ref={audioRef} />
-      <div className="music-player hidden md:flex flex-row lg:flex-col bg-lightBlack min-w-fit p-2 justify-center">
-        {/* rkq: change className */}
-        <div className="song-info flex gap-x-2 flex-row lg:flex-col w-[30%]">
-          <div className="w-14 lg:w-48 aspect-square">
-            <img
-              className="rounded"
-              src={currentSong.cover}
-              alt={`${currentSong.artist} - ${currentSong.title}`}
+      <div
+        onClick={() => setShowModal(prevState => !prevState)}
+        className="mobile-player flex flex-col bg-lightBlack gap-1 px-8 py-2 justify-center cursor-pointer md:hidden"
+      >
+        <div className="flex flex-row justify-between">
+          <div className="flex flex-row gap-2 h-14 w-full text-white">
+            <TrackInfo song={currentSong} />
+          </div>
+          <div className="flex items-center justify-center pl-4">
+            <PlayPauseButton
+              PlayIcon={<IoMdPlay className="size-6 fill-spotifyGray hover:fill-white" />}
+              PauseIcon={<IoMdPause className="size-6 fill-spotifyGray hover:fill-white" />}
             />
           </div>
-          <div className="flex flex-col justify-center">
-            <div className="text-white text-sm lg:text-lg font-semibold">{currentSong.title}</div>
-            <div className="text-xs lg:text-sm font-semibold">{currentSong.artist}</div>
-          </div>
         </div>
-        <div className="player flex flex-col">
-          <div className="controls flex flex-row">
-            <button onClick={() => onNextPrevSong('prev')}>
-              <IoIosSkipBackward className="size-6 hover:fill-white" />
-            </button>
-            <button className="flex justify-center items-center size-9" onClick={onPlayPause}>
-              {isPlaying ? (
-                <IoPauseCircle className="size-8 fill-white hover:size-9" />
-              ) : (
-                <IoMdPlayCircle className="size-8 fill-white hover:size-9" />
-              )}
-            </button>
-            <button onClick={() => onNextPrevSong('next')}>
-              <IoIosSkipForward className="size-6 hover:fill-white" />
-            </button>
-          </div>
-          <div className="length flex flex-row gap-2">
-            <div className="current-time w-12 pb-0.5 text-spotifyGray">
-              {convertSeconds(currentTime)}
+        <div className="flex items-center justify-center">
+          <RangeInput value={currentTime} max={duration} />
+        </div>
+      </div>
+      <div
+        className={`${showModal ? 'fixed inset-0 flex' : 'hidden'} w-full md:relative md:flex items-center justify-center bg-[rgb(0_0_0_/_20%)] z-50`}
+      >
+        <div className="p-8 md:p-4 w-full h-full max-h-screen rounded-xl bg-lightBlack shadow-md text-spotifyGray flex flex-col gap-12">
+          <button
+            className="md:hidden"
+            onClick={() => setShowModal(prevState => !prevState)}
+            title="Close"
+          >
+            <IoIosArrowDown className="hover:fill-white" />
+          </button>
+
+          <div className="container mx-auto flex flex-col max-w-80 gap-2 items-center md:flex-row md:max-w-none md:justify-between">
+            <div className="flex flex-col gap-2 text-white md:flex-row md:min-w-52 md:pr-3 md:h-14">
+              <TrackInfo song={currentSong} />
             </div>
-
-            {/* <input
-              type="range"
-              min="0"
-              max={duration}
-              value={currentTime}
-              onChange={handleRangeInputChange(setAudioTime)}
-            /> */}
-
-            <RangeInput
-              value={currentTime}
-              max={duration}
-              onChange={handleRangeInputChange(setAudioTime)}
-            />
-
-            <Duration source={currentSong.source} />
+            <div className="flex flex-col w-full gap-3 md:gap-0">
+              <SongControls />
+              <SongProgress handleTimeChange={setAudioTime} />
+            </div>
+            <div className="md:min-w-52 md:pl-3">
+              <VolumeControl />
+            </div>
           </div>
         </div>
-        <VolumeControl />
       </div>
     </>
   )
