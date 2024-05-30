@@ -16,7 +16,7 @@
  */
 export default function handleRangeInputChange(callbackFn: (newValue: number) => void) {
   return (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = parseFloat(event.target.value)
+    const newValue = event.target.valueAsNumber
     callbackFn(newValue)
   }
 }
