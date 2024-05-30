@@ -46,13 +46,27 @@ function Bar({ initialHeight, xPos }: { initialHeight: number; xPos: number }) {
     const barAnimation = async () => {
       await animate(
         scope.current,
-        { height: getIncrementArray(initialHeight, TOP_HEIGHT) },
+        {
+          height:
+            initialHeight !== TOP_HEIGHT
+              ? getIncrementArray(initialHeight, TOP_HEIGHT)
+              : [initialHeight],
+        },
         { duration: (TOP_HEIGHT - initialHeight) / (TOP_HEIGHT * duration) },
       )
+      if (!scope.current) return
       await animate(scope.current, { height: [14, 1, 8, 4, 13] }, { repeat: Infinity, duration })
     }
     barAnimation()
   }, [scope, animate, initialHeight])
 
-  return <motion.rect ref={scope} width={2} height={initialHeight} x={xPos} />
+  return (
+    <motion.rect
+      ref={scope}
+      initial={{ height: initialHeight }}
+      width={2}
+      height={initialHeight}
+      x={xPos}
+    />
+  )
 }
