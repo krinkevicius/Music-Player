@@ -19,13 +19,13 @@ https://krinkevicius-music.netlify.app/
 1. Clone this repository:
 
 ```sh
- git clone git@github.com:TuringCollegeSubmissions/krinke-WD.4B.2.5.git
+ git clone git@github.com:krinkevicius/Music-Player.git
 ```
 
 2. Navigate to the project directory:
 
 ```sh
- cd krinke-WD.4B.2.5
+ cd Music-Player
 ```
 
 3. Install dependencies:
