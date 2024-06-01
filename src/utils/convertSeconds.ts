@@ -13,5 +13,5 @@ export default function convertSeconds(seconds: number): string {
     minute: '2-digit',
     second: '2-digit',
   })
-  return `${minutesAndSeconds.format(new Date(seconds * 1000))}`
+  return minutesAndSeconds.format(new Date(seconds * 1000))
 }

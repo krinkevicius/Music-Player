@@ -1,15 +1,14 @@
-import {
-  CHROMIUM_PROGRESS_STYLES,
-  CHROMIUM_THUMB_STYLES,
-  FIREFOX_PROGRESS_STYLES,
-  FIREFOX_THUMB_STYLES,
-} from '@/lib/constants/rangeInputStyles'
-import classNames from 'classnames'
+import { COMBINED_STYLES, COMBINED_HOVER_STYLES } from '@/lib/constants/rangeInputStyles'
+import React from 'react'
 
 type RangeInputProps = {
   value: number
   max: number
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
+}
+
+interface ExtendedCSSProperties extends React.CSSProperties {
+  '--customWidth'?: string
 }
 
 export default function RangeInput({ value, max, onChange }: RangeInputProps) {
@@ -19,13 +18,11 @@ export default function RangeInput({ value, max, onChange }: RangeInputProps) {
 
   const commonStyles = `no-default-webkit-thumb appearance-none relative w-full h-1 rounded-lg bg-rangeInputBackground outline-none ${!isDisabled && 'cursor-pointer'}`
 
-  const completeStyles = classNames(
-    commonStyles,
-    ...CHROMIUM_PROGRESS_STYLES,
-    ...CHROMIUM_THUMB_STYLES,
-    ...FIREFOX_PROGRESS_STYLES,
-    ...FIREFOX_THUMB_STYLES,
-  )
+  const completeStyles = `${commonStyles} ${COMBINED_STYLES.join(' ')} ${isDisabled ? '' : `${COMBINED_HOVER_STYLES.join(' ')}`}`
+
+  const style: ExtendedCSSProperties = {
+    '--customWidth': `${progress}%`,
+  }
 
   return (
     <input
@@ -37,7 +34,7 @@ export default function RangeInput({ value, max, onChange }: RangeInputProps) {
       onChange={onChange}
       disabled={isDisabled}
       className={completeStyles}
-      style={{ '--customWidth': `${progress}%` } as React.CSSProperties}
+      style={style}
     />
   )
 }
