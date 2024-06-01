@@ -62,6 +62,10 @@ export const useStore = create<State>()(
     }),
     {
       name: 'music-storage',
+      partialize: state =>
+        Object.fromEntries(
+          Object.entries(state).filter(([key]) => !['isPlaying', 'currentTime'].includes(key)),
+        ),
     },
   ),
 )
