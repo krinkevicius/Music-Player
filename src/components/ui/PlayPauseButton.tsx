@@ -9,7 +9,7 @@ type PlayPauseButtonProps = {
 
 export default function PlayPauseButton({ PlayIcon, PauseIcon }: PlayPauseButtonProps) {
   const isPlaying = useStore(state => state.isPlaying)
-  const onPlayPause = useStore(state => state.onPlayPause)
+  const { onPlayPause } = useStore()
 
   return (
     <button

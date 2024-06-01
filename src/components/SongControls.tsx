@@ -4,7 +4,7 @@ import { IoIosSkipBackward, IoIosSkipForward, IoMdPlayCircle } from 'react-icons
 import { IoPauseCircle } from 'react-icons/io5'
 
 export default function SongControls() {
-  const onNextPrevSong = useStore(state => state.onNextPrevSong)
+  const { onNextPrevSong } = useStore()
   return (
     <div className="controls flex flex-row gap-4 h-12 md:gap-0 items-center justify-center">
       <button onClick={() => onNextPrevSong('prev')}>

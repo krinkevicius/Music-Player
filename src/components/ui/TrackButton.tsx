@@ -11,8 +11,9 @@ type TrackButtonProps = {
 export default function TrackButton({ song, isHovered }: TrackButtonProps) {
   const currentSong = useStore(state => state.currentSong)
   const isPlaying = useStore(state => state.isPlaying)
-  const onPlayPause = useStore(state => state.onPlayPause)
-  const onSelectSong = useStore(state => state.onSelectSong)
+  // const onPlayPause = useStore(state => state.onPlayPause)
+  // const onSelectSong = useStore(state => state.onSelectSong)
+  const { onPlayPause, onSelectSong } = useStore()
   const isCurrentSongPlaying = song.id === currentSong.id && isPlaying
 
   if (isHovered && isCurrentSongPlaying)

@@ -12,7 +12,7 @@ type FavoriteButtonProps = {
 
 export default function FavoriteButton({ songId, isFavorite, isShowing }: FavoriteButtonProps) {
   const buttonTitle = isFavorite ? 'Remove from favorites' : 'Add to favorites'
-  const onToggleFavorite = useStore(state => state.onToggleFavorite)
+  const { onToggleFavorite } = useStore()
 
   return (
     (isShowing || isFavorite) && (

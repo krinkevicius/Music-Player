@@ -16,8 +16,9 @@ export default function MusicPlayer() {
   const [showModal, setShowModal] = useState(false)
   const currentSong = useStore(state => state.currentSong)
   const currentTime = useStore(state => state.currentTime)
-  const onPlayPause = useStore(state => state.onPlayPause)
-  const onNextPrevSong = useStore(state => state.onNextPrevSong)
+  // const onPlayPause = useStore(state => state.onPlayPause)
+  // const onNextPrevSong = useStore(state => state.onNextPrevSong)
+  const { onPlayPause, onNextPrevSong } = useStore()
 
   const [audioRef, setAudioTime] = useAudio()
   const duration = useDuration(currentSong.source)

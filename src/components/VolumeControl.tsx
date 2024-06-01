@@ -5,7 +5,7 @@ import RangeInput from '@/components/ui/RangeInput'
 
 export default function VolumeControl() {
   const volume = useStore(state => state.volume)
-  const onSetVolume = useStore(state => state.onSetVolume)
+  const { onSetVolume } = useStore()
 
   return (
     <div className="flex flex-row gap-1">
