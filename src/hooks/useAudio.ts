@@ -42,8 +42,6 @@ export default function useAudio(): [React.RefObject<HTMLAudioElement>, (time: n
   const currentSong = useStore(state => state.currentSong)
   const isPlaying = useStore(state => state.isPlaying)
   const volume = useStore(state => state.volume)
-  // const onNextPrevSong = useStore(state => state.onNextPrevSong)
-  // const onSetCurrentTime = useStore(state => state.onSetCurrentTime)
   const { onNextPrevSong, onSetCurrentTime } = useStore()
   const audioRef = useRef<HTMLAudioElement>(null)
   const audioElement = audioRef.current
