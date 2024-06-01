@@ -5,7 +5,6 @@ import useKeyboardShortcut from '@/hooks/useKeyboardShortcut'
 import TrackInfo from '@/components/TrackInfo'
 import PlayPauseButton from '@/components/ui/PlayPauseButton'
 import RangeInput from '@/components/ui/RangeInput'
-import useDuration from '@/hooks/useDuration'
 import VolumeControl from '@/components/VolumeControl'
 import SongProgress from '@/components/SongProgress'
 import SongControls from '@/components/SongControls'
@@ -19,7 +18,6 @@ export default function MusicPlayer() {
   const { onPlayPause, onNextPrevSong } = useStore()
 
   const [audioRef, setAudioTime] = useAudio()
-  const duration = useDuration(currentSong.source)
 
   useKeyboardShortcut(PLAY_PAUSE_KEY, onPlayPause)
   useKeyboardShortcut(PREVIOUS_SONG_KEY, () => onNextPrevSong('prev'))
@@ -44,7 +42,7 @@ export default function MusicPlayer() {
           </div>
         </div>
         <div className="flex items-center justify-center">
-          <RangeInput value={currentTime} max={duration} />
+          <RangeInput value={currentTime} max={currentSong.duration} />
         </div>
       </div>
       <div

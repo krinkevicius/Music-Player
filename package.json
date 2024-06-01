@@ -12,14 +12,12 @@
   },
   "dependencies": {
     "framer-motion": "^11.2.4",
-    "howler": "^2.2.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.2.1",
     "zustand": "^4.5.2"
   },
   "devDependencies": {
-    "@types/howler": "^2.2.11",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "@typescript-eslint/eslint-plugin": "^7.2.0",

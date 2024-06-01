@@ -5,4 +5,5 @@ export type Song = {
   source: string
   cover: string
   favorite: boolean
+  duration: number
 }

@@ -23,7 +23,7 @@ export default function Track({ song }: { song: Song }) {
         <TrackInfo song={song} showFavoriteButton={isHovered} highlightArtistName={isHovered} />
       </div>
       <div className="flex items-center w-12 gap-8 px-4">
-        <Duration source={song.source} />
+        <Duration duration={song.duration} />
       </div>
     </div>
   )
