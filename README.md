@@ -2,8 +2,6 @@
 
 A minimal music player created with React, Typescript, Zustand and Tailwind.
 
-This was used as an implementation of Turing College Web Development project.
-
 ### Try out the app here!
 
 https://krinkevicius-music.netlify.app/
